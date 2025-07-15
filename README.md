@@ -1,1 +1,1 @@
-# LowestCommonAncestor
+Given values of two values n1 and n2 in a Binary Search Tree, find the Lowest Common Ancestor (LCA).  You may assume that both values exist in the tree.
