@@ -1,7 +1,7 @@
 package com.noonwerware.lowestcommonancestor;
 
 public class BinarySearchTree {
-	TreeNode root;
+	Node root;
 	
 	public BinarySearchTree() {
 		root = null;
@@ -11,9 +11,9 @@ public class BinarySearchTree {
 		root = insertNode(root, key, null);
 	}
 	
-	TreeNode insertNode(TreeNode root, int key, TreeNode ancestor) {
+	Node insertNode(Node root, int key, Node ancestor) {
 		if (null == root) {
-			root = new TreeNode(key);
+			root = new Node(key);
 			return root;
 		}
 		
@@ -30,7 +30,7 @@ public class BinarySearchTree {
 		root = deleteNode(root, key);
 	}
 	
-	TreeNode deleteNode(TreeNode root, int key) {
+	Node deleteNode(Node root, int key) {
 		if (null == root) {
 			return root;
 		}
@@ -55,7 +55,7 @@ public class BinarySearchTree {
 		return root;
 	}
 	
-	int minValue(TreeNode root) {
+	int minValue(Node root) {
 		int minValue = root.key;
 		while (root.left != null) {
 			minValue = root.left.key;
@@ -72,7 +72,7 @@ public class BinarySearchTree {
 
 	}
 	
-	boolean searchTree(TreeNode root, int key) {
+	boolean searchTree(Node root, int key) {
 		if (null == root) {
 			return false;
 		}
@@ -88,7 +88,7 @@ public class BinarySearchTree {
 		return searchTree(root.left, key);
 	}
 	
-	TreeNode find(int key) {
+	Node find(int key) {
 		if (null == root) {
 			return null;
 		}
@@ -104,7 +104,7 @@ public class BinarySearchTree {
 		
 	}
 	
-	TreeNode findNode(TreeNode root, int key) {
+	Node findNode(Node root, int key) {
 		if (null == root) {
 			return null;
 		}
@@ -121,7 +121,7 @@ public class BinarySearchTree {
 		
 	}
 	
-	TreeNode findLeastCommonAncestor(int n1, int n2) {
+	Node findLeastCommonAncestor(int n1, int n2) {
 		if ((null == root) || (!search(n1)) || (!search(n2))) {
 			return null;
 		}
@@ -130,12 +130,12 @@ public class BinarySearchTree {
 			//
 			// Both are the same node.  Return its ancestor.
 			//
-			TreeNode foundNode = find(n1);
+			Node foundNode = find(n1);
 			return foundNode;
 		}
 		
-		TreeNode n1Node = find(n1);
-		TreeNode n2Node = find(n2);
+		Node n1Node = find(n1);
+		Node n2Node = find(n2);
 		
 		if ((root.key == n1Node.key) || (root.key == n2Node.key)) {
 			//
@@ -155,7 +155,7 @@ public class BinarySearchTree {
 		return root;
 	}
 	
-	TreeNode findLeastCommonAncestor(TreeNode root, TreeNode n1Node, TreeNode n2Node) {
+	Node findLeastCommonAncestor(Node root, Node n1Node, Node n2Node) {
 		if (null == root) {
 			return null;
 		}
@@ -179,7 +179,7 @@ public class BinarySearchTree {
 		return root;
 	}
 	
-	boolean isRight(TreeNode root, TreeNode node) {
+	boolean isRight(Node root, Node node) {
 		if (null == root) {
 			return false;
 		}

@@ -1,11 +1,11 @@
 package com.noonwerware.lowestcommonancestor;
 
-public class TreeNode {
+public class Node {
 	int key;
-	TreeNode left;
-	TreeNode right;
+	Node left;
+	Node right;
 	
-	public TreeNode(int item) {
+	public Node(int item) {
 		key = item;
 		left = null;
 		right = null; 

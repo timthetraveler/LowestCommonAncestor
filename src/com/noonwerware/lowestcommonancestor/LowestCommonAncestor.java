@@ -69,12 +69,14 @@ public class LowestCommonAncestor {
 //		findLeastCommonAncestor(9, 14);
 //		findLeastCommonAncestor(9, 13);
 
-		findLeastCommonAncestor(14, 14);
-		findLeastCommonAncestor(14, 13);
+//		findLeastCommonAncestor(14, 14);
+//		findLeastCommonAncestor(14, 13);
+		
+		isBinarySearchTree();
 }
 
 	void findIt(int key) {
-		TreeNode foundNode = tree.find(key);
+		Node foundNode = tree.find(key);
 		if (null != foundNode) {
 			System.out.println(String.format("%d found %s", key, foundNode.toString()));
 		}
@@ -84,9 +86,30 @@ public class LowestCommonAncestor {
 	}
 	
 	void findLeastCommonAncestor(int n1, int n2) {
-		TreeNode leastCommonAncestor = tree.findLeastCommonAncestor(n1, n2);
+		Node leastCommonAncestor = tree.findLeastCommonAncestor(n1, n2);
 		System.out.println(String.format("The least common ancestor of %d and %d is %s", n1, n2
 				, (null != leastCommonAncestor) ?  leastCommonAncestor.key : "none"));
 	}
 
+	void isBinarySearchTree() {
+		System.out.println(String.format("Is tree a binary search tree %b", isBinarySearchTree(tree.root)));
+	}
+	
+	boolean isBinarySearchTree(Node parentNode) {
+		int key = parentNode.key;
+		if (null != parentNode.left) {
+			int leftKey = parentNode.left.key;
+			if ((leftKey > key) || (!isBinarySearchTree(parentNode.left))) {
+				return false;
+			}
+		}
+
+		if (null != parentNode.right) {
+			int rightKey = parentNode.right.key;
+			if ((rightKey < key) || (!isBinarySearchTree(parentNode.right))) {
+				return false;
+			}
+		}
+		return true;
+	}
 }
